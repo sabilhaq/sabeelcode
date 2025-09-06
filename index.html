@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. Sum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const main = document.getElementById('main');
+      sidebar.classList.toggle('w-64');
+      sidebar.classList.toggle('w-16');
+      main.classList.toggle('ml-64');
+      main.classList.toggle('ml-16');
+
+      // Toggle visibility of labels but always show numbers
+      const labels = sidebar.querySelectorAll('.label');
+      labels.forEach(label => {
+        label.classList.toggle('hidden');
+      });
+
+      const numbers = sidebar.querySelectorAll('.number');
+      numbers.forEach(number => {
+        number.classList.toggle('inline-block');
+        number.classList.toggle('hidden');
+      });
+
+      // Hide/show lock icons only when expanded
+      const locks = sidebar.querySelectorAll('.lock');
+      locks.forEach(lock => {
+        lock.classList.toggle('hidden');
+      });
+
+      // Rotate toggle arrow
+      const toggleIcon = document.getElementById('toggleIcon');
+      toggleIcon.classList.toggle('rotate-180');
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white shadow-lg border-r border-gray-200 p-4 fixed top-0 left-0 h-full overflow-y-auto transition-all duration-300 z-20">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-gray-700 label">Problems</h2>
+        <button onclick="toggleSidebar()" class="p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 shadow transition transform active:scale-95" title="Toggle Sidebar">
+          <span id="toggleIcon" class="inline-block transition-transform duration-300">⏩</span>
+        </button>
+      </div>
+      <ul class="space-y-3">
+        <li>
+          <a href="#" class="flex items-center justify-between px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-medium shadow-sm hover:bg-blue-100 transition">
+            <div class="flex items-center space-x-2">
+              <span class="number hidden">1</span>
+              <span class="label">1. Sum</span>
+            </div>
+          </a>
+        </li>
+        <li class="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 text-gray-400 font-medium cursor-not-allowed">
+          <div class="flex items-center space-x-2">
+            <span class="number hidden">2</span>
+            <span class="label">2. Two Sum</span>
+          </div>
+          <span class="lock">🔒</span>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main" class="flex-1 max-w-3xl mx-auto p-4 sm:p-6 md:p-10 ml-64 transition-all duration-300">
+      <div class="bg-white shadow-md rounded-2xl p-6 sm:p-8">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800">1. Sum</h1>
+
+        <p class="mb-8 text-gray-700 leading-relaxed">
+          Given an array of integers, return the sum of all elements.
+        </p>
+
+        <div class="space-y-8">
+          <div class="p-5 border-l-4 border-blue-500 bg-blue-50 rounded">
+            <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gray-800">Example 1</h2>
+            <p><span class="font-semibold">Input:</span><br>
+              <code class="bg-gray-100 px-2 py-1 rounded">nums = [2,7,11,15]</code>
+            </p>
+            <p class="mt-2"><span class="font-semibold">Output:</span><br>
+              <code class="bg-gray-100 px-2 py-1 rounded">35</code>
+            </p>
+            <p class="mt-2"><span class="font-semibold">Explanation:</span><br>
+              2 + 7 + 11 + 15 = 35
+            </p>
+          </div>
+
+          <div class="p-5 border-l-4 border-blue-500 bg-blue-50 rounded">
+            <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gray-800">Example 2</h2>
+            <p><span class="font-semibold">Input:</span><br>
+              <code class="bg-gray-100 px-2 py-1 rounded">nums = [3,2,4]</code>
+            </p>
+            <p class="mt-2"><span class="font-semibold">Output:</span><br>
+              <code class="bg-gray-100 px-2 py-1 rounded">9</code>
+            </p>
+          </div>
+
+          <div class="p-5 border-l-4 border-blue-500 bg-blue-50 rounded">
+            <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gray-800">Example 3</h2>
+            <p><span class="font-semibold">Input:</span><br>
+              <code class="bg-gray-100 px-2 py-1 rounded">nums = [3,3]</code>
+            </p>
+            <p class="mt-2"><span class="font-semibold">Output:</span><br>
+              <code class="bg-gray-100 px-2 py-1 rounded">6</code>
+            </p>
+          </div>
+
+          <div class="p-5 border-l-4 border-yellow-500 bg-yellow-50 rounded">
+            <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gray-800">Constraints</h2>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              <li>1 &lt;= nums.length &lt;= 10^4</li>
+              <li>-10^9 &lt;= nums[i] &lt;= 10^9</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
